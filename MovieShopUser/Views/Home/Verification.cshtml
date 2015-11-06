@@ -1,0 +1,77 @@
+﻿@model MoviesShopProxy.DomainModel.Movie
+@{
+    ViewBag.Title = "Verification";
+}
+
+<style>
+    #moviePoster {
+        position: relative;
+        width: 200px;
+        height: 300px;
+        max-height: 100%;
+        max-width: 100%;
+        display: block;
+        background-size: 100% 100%;
+        margin: 10%;
+        transition: 0.3s;
+        -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+        clear:both;
+    }
+
+    body {
+        z-index: 9999;
+        text-align: center;
+        align-content: center;
+        color:black;
+    }
+
+    .background-image {
+        position: fixed;
+        left: -15px;
+        right: 15px;
+        z-index: -1;
+        display: block;
+        background-image: url('http://www.planwallpaper.com/static/images/6790904-free-background-wallpaper.jpg');
+        width: 115%;
+        height: 130%;
+        -webkit-filter: blur(10px);
+        -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+        filter: blur(10px);
+    }
+</style>
+
+<div class="background-image"></div>
+
+<div class="container-fluid">
+    <div class="text-center">
+        <h1>Verification</h1>
+        <p>If you are a returning customer, just enter your email or press the button new customer</p>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-bottom: 15px; border: 2px solid black;" >
+        <h4>If you are a returning customer write your email here.</h4>
+        <form method="get" action="~/Home/CustomerEdit" class=" col-md-12">
+            <input type="hidden" value="@Model.Id" name="movieId" />
+            <input type="text" name="eMail" />
+            <input type="submit" value="Buy" />
+        </form>
+    </div>
+
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-bottom: 7px; border: 2px solid black;">
+         <h4>If you are a new customer press this button and fill out the form.</h4>
+        @Html.ActionLink("New Customer", "NewCustomer", "Home", new { movieId = Model.Id }, new { @class = "btn btn-default" })
+    </div>
+
+
+    <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
+        <p><img class="img-responsive" id="moviePoster" src="@Model.imageURL"/></p>
+    </div>
+
+    <div class="center-block text-center">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    </div>

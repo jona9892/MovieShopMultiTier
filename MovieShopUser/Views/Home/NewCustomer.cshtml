@@ -1,0 +1,94 @@
+﻿@using MovieShopUser.Models.ViewModels;
+
+@model CustomerViewModel
+@{
+    ViewBag.Title = "NewCustomer";
+}
+
+<style>
+    body {
+        z-index: 1;
+        color: black;
+        font-size: larger;
+        align-content: center;
+    }
+
+    .table tr td {
+        border-top: 1px solid black !important;
+    }
+
+    .background-image {
+        position: fixed;
+        left: -15px;
+        right: 15px;
+        z-index: -1;
+        display: block;
+        background-image: url('http://www.planwallpaper.com/static/images/6790904-free-background-wallpaper.jpg');
+        width: 115%;
+        height: 130%;
+        -webkit-filter: blur(10px);
+        -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+        filter: blur(10px);
+    }
+
+    #tableInfo {
+        clear: both;
+    }
+
+    .img-responsive {
+        transition: 0.4s !important;
+        -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5) !important;
+        -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5) !important;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5) !important;
+    }
+</style>
+
+<div class="background-image"></div>
+<div class="content">
+
+    <h2>NewCustomer</h2>
+    <form method="Post" action="~/Home/NewCustomerCreate" class="col-md-12">
+        <input type="hidden" value="@Model.Movie.Id" name="movieId" />
+
+        <div class="form-group">
+            <label for="FirstName">First Name</label>
+            <input type="text" class="form-control" id="FirstName" name="FirstName">
+        </div>
+        <div class="form-group">
+            <label for="LastName">Last Name</label>
+            <input type="text" class="form-control" id="LastName" name="LastName">
+        </div>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="text" class="form-control" id="Email" name="Email">
+        </div>
+        <div class="form-group">
+            <label for="StreetName">Street Name </label>
+            <input type="text" class="form-control" id="StreetName" name="StreetName">
+        </div>
+        <div class="form-group">
+            <label for="StreetNumber">Street Number </label>
+            <input type="text" class="form-control" id="StreetNumber" name="StreetNumber">
+        </div>
+        <div class="form-group">
+            <label for="Zipcode">Zip Code </label>
+            <input type="text" class="form-control" id="Zipcode" name="Zipcode">
+        </div>
+        <div class="form-group">
+            <label for="Country">Country </label>
+            <input type="text" class="form-control" id="Country" name="Country">
+        </div>
+
+
+        <button type="submit" class="btn btn-success"> Save</button>
+
+    </form>
+
+
+
+    <div>
+        @Html.ActionLink("Back", "Verification", new { movieId = Model.Movie.Id});
+    </div>
+
+    </div>

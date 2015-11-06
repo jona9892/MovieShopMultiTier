@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MoviesShopProxy.DomainModel.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(Model => Model.Title)
+        </th>
+        <th>
+            Genre
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imageURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trailerURL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.imageURL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trailerURL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Update", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+@if (ViewBag.sortDirection)
+{
+    @Html.ActionLink("Sort Asc Name", "Index", new { asc = true }, new { @class = "btn btn-default" })
+}
+else
+{
+    @Html.ActionLink("Sort Desc Name", "Index", new { asc = false }, new { @class = "btn btn-warning" })
+}

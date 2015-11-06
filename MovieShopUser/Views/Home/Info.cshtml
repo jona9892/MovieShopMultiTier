@@ -1,0 +1,74 @@
+﻿@model MoviesShopProxy.DomainModel.Movie
+
+@{
+    ViewBag.Title = "Info";
+}
+
+<style>
+
+    body{
+        z-index: 1;
+        color: black;
+        font-size:larger;
+        align-content:center;
+    }
+
+    .table tr td {
+        border-top: 1px solid black !important;
+    }
+
+    .background-image {
+        position:fixed;
+        left:-15px;
+        right: 15px;
+        z-index: -1;
+        
+        display: block;
+        background-image: url('http://www.planwallpaper.com/static/images/6790904-free-background-wallpaper.jpg');
+        width: 115%;
+        height: 130%;
+        
+        -webkit-filter: blur(10px);
+        -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+        filter: blur(10px);
+    }
+      
+    #tableInfo {
+          clear:both;
+    }
+
+    .img-responsive {
+        transition: 0.4s !important;
+        -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5) !important;
+        -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5) !important;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5) !important;
+    }
+
+</style>
+
+<div class="background-image"></div>
+<div class="content">
+
+    <div class="img-rounded" style="background-color:rgba(128, 128, 128,0.5);">
+    <h2 style="text-align:center;">@Model.Title - @Model.Year</h2>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="img-responsive">
+                    <img class="img-responsive" src="@Model.imageURL" />
+                </div>
+            </div>
+       
+            <div class="col-sm-8">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="@Model.trailerURL"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <td class="col-md-4">@Html.ActionLink("Buy " + @Model.Price + "$", "Verification", "Home", new { movieId = Model.Id }, new { @class = "btn btn-default" })  </td>
+<td class="col-md-4">@Html.ActionLink("Add to Cart", "Index", "Home", new { shoppingCartId = Model.Id }, new { @class = "btn btn-default" }) </td>

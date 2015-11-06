@@ -1,0 +1,32 @@
+﻿@model List<MoviesShopProxy.DomainModel.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    
+    <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Total price</th>
+    </tr> 
+    <tr>
+@foreach (var item in Model)
+{
+    foreach (var lines in item.OrderLines)
+    {
+        <td>@lines.Movie.Title</td>
+        <td>@lines.Amount</td>
+        <td>@(@lines.Movie.Price * @lines.Amount)</td>
+    }
+}
+    
+      
+    </tr> 
+</table>
+
+
+
