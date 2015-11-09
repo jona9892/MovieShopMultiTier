@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MoviesShopProxy.DomainModel.Customer>
+﻿@model IEnumerable<DomainModel.DomainModel.Customer>
 
 @{
     ViewBag.Title = "Index";
@@ -50,11 +50,3 @@
 }
 
 </table>
-@if (ViewBag.sortDirection)
-{
-    @Html.ActionLink("Sort Asc Name", "Index", new { asc = true }, new { @class = "btn btn-default" })
-}
-else
-{
-    @Html.ActionLink("Sort Desc Name", "Index", new { asc = false }, new { @class = "btn btn-warning" })
-}

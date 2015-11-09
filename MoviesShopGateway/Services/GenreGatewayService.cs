@@ -14,7 +14,7 @@ namespace MoviesShopGateway.Services
         {
             using (var client = new HttpClient())
             {
-                HttpResponseMessage response = client.PostAsJsonAsync("http://localhost:4835/api/genres/", t).Result;
+                HttpResponseMessage response = client.PostAsJsonAsync("http://localhost:4835/api/genre/", t).Result;
                 return response.Content.ReadAsAsync<Genre>().Result;
             }
         }
@@ -23,7 +23,7 @@ namespace MoviesShopGateway.Services
         {
             using (var client = new HttpClient())
             {
-                HttpResponseMessage response = client.DeleteAsync("http://localhost:4835/api/genres/" + t.Id).Result;
+                HttpResponseMessage response = client.DeleteAsync("http://localhost:4835/api/genre/" + t.Id).Result;
                 return response.Content.ReadAsAsync<Genre>().Result;
             }
         }
@@ -32,30 +32,25 @@ namespace MoviesShopGateway.Services
         {
             using (var client = new HttpClient())
             {
-                HttpResponseMessage response = client.GetAsync("http://localhost:4835/api/genres/" + id).Result;
+                HttpResponseMessage response = client.GetAsync("http://localhost:4835/api/genre/" + id).Result;
                 return response.Content.ReadAsAsync<Genre>().Result;
             }
         }
 
-        public List<Genre> ReadAll()
+        public IEnumerable<Genre> ReadAll()
         {
             using (var client = new HttpClient())
             {
-                HttpResponseMessage response = client.GetAsync("http://localhost:4835/api/genres/").Result;
-                return response.Content.ReadAsAsync<List<Genre>>().Result;
+                HttpResponseMessage response = client.GetAsync("http://localhost:4835/api/genre/").Result;
+                return response.Content.ReadAsAsync<IEnumerable<Genre>>().Result;
             }
-        }
-
-        public List<Genre> ReadAll(bool? asc)
-        {
-            throw new NotImplementedException();
         }
 
         public Genre Update(Genre t)
         {
             using (var client = new HttpClient())
             {
-                HttpResponseMessage response = client.PutAsJsonAsync("http://localhost:4835/api/genres/", t).Result;
+                HttpResponseMessage response = client.PutAsJsonAsync("http://localhost:4835/api/genre/", t).Result;
                 return response.Content.ReadAsAsync<Genre>().Result;
             }
         }

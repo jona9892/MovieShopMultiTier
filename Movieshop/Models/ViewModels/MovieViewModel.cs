@@ -13,7 +13,7 @@ namespace Movieshop.Models.ViewModels
             Genres = new List<Genre>();
         }
         public Movie Movie { get; set; }
-        public List<Genre> Genres { get; set; }
+        public IEnumerable<Genre> Genres { get; set; }
         
     }
 }

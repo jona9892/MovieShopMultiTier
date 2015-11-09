@@ -13,12 +13,9 @@ namespace Movieshop.Controllers
         
         // GET: Movies
         [HttpGet]
-        public ActionResult Index(bool? asc)
+        public ActionResult Index()
         {
-            bool sortDirection = asc.HasValue ? asc.Value : false;
-            ViewBag.sortDirection = !sortDirection;
-
-            List<Movie> movies = facade.GetMovieGateway().ReadAll(sortDirection);
+            IEnumerable<Movie> movies = facade.GetMovieGateway().ReadAll();
             return View(movies);
         }
 

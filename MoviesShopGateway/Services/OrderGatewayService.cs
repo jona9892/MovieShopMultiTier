@@ -40,19 +40,14 @@ namespace MoviesShopGateway.Services
             }
         }
 
-        public List<Order> ReadAll()
+        public IEnumerable<Order> ReadAll()
         {
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
                     client.GetAsync("http://localhost:35459/API/Orders").Result;
-                return response.Content.ReadAsAsync<List<Order>>().Result;
+                return response.Content.ReadAsAsync<IEnumerable<Order>>().Result;
             }
-        }
-
-        public List<Order> ReadAll(bool? asc)
-        {
-            throw new NotImplementedException();
         }
 
         public Order Update(Order t)

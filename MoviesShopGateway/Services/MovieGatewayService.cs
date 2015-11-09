@@ -18,7 +18,7 @@ namespace MoviesShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PostAsJsonAsync("http://localhost:35459/API/Movies", movie).Result;
+                    client.PostAsJsonAsync("http://localhost:35459/API/Movie", movie).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }
@@ -28,7 +28,7 @@ namespace MoviesShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.GetAsync("http://localhost:35459/API/Movies" + id).Result;
+                    client.GetAsync("http://localhost:35459/API/Movie" + id).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }
@@ -38,7 +38,7 @@ namespace MoviesShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PutAsJsonAsync("http://localhost:35459/API/Movies", t).Result;
+                    client.PutAsJsonAsync("http://localhost:35459/API/Movie", t).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }
@@ -48,24 +48,19 @@ namespace MoviesShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.DeleteAsync("http://localhost:35459/API/Movies" + t.Id).Result;
+                    client.DeleteAsync("http://localhost:35459/API/Movie" + t.Id).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }
 
-        public List<Movie> ReadAll(bool? asc)
+        public IEnumerable<Movie> ReadAll()
         {
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.GetAsync("http://localhost:35459/API/Movies").Result;
-                return response.Content.ReadAsAsync<List<Movie>>().Result;
+                    client.GetAsync("http://localhost:35459/API/Movie").Result;
+                return response.Content.ReadAsAsync<IEnumerable<Movie>>().Result;
             }
-        }
-
-        public List<Movie> ReadAll()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -8,9 +8,9 @@ namespace Movieshop.Models.ViewModels
 {
     public class OrderViewModel
     {
-        public List<Order> orders { get; set; }
-        public List<Customer> customers { get; set; }
-        public List<Movie> movies { get; set; }
+        public IEnumerable<Order> orders { get; set; }
+        public IEnumerable<Customer> customers { get; set; }
+        public IEnumerable<Movie> movies { get; set; }
 
 
     }

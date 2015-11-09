@@ -10,12 +10,9 @@ namespace Movieshop.Controllers
         private Facade facade = new Facade();
 
         // GET: Customers
-        public ActionResult Index(bool? asc)
+        public ActionResult Index()
         {
-            bool sortDirection = asc.HasValue ? asc.Value : false;
-            ViewBag.sortDirection = !sortDirection;
-
-            List<Customer> customers = facade.GetCustomerGateway().ReadAll(sortDirection);
+            IEnumerable<Customer> customers = facade.GetCustomerGateway().ReadAll();
             return View(customers);
         }
 

@@ -40,23 +40,13 @@ namespace MoviesShopGateway.Services
             }
         }
 
-        public List<Customer> ReadAll(bool? asc)
+        public IEnumerable<Customer> ReadAll()
         {
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
                     client.GetAsync("http://localhost:35459/API/Customer").Result;
-                return response.Content.ReadAsAsync<List<Customer>>().Result;
-            }
-        }
-
-        public List<Customer> ReadAll()
-        {
-            using (var client = new HttpClient())
-            {
-                HttpResponseMessage response =
-                    client.GetAsync("http://localhost:35459/API/Customer").Result;
-                return response.Content.ReadAsAsync<List<Customer>>().Result;
+                return response.Content.ReadAsAsync<IEnumerable<Customer>>().Result;
             }
         }
 

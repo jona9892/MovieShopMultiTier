@@ -40,19 +40,14 @@ namespace MoviesShopGateway.Services
             }
         }
 
-        public List<Adress> ReadAll()
+        public IEnumerable<Adress> ReadAll()
         {
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
                     client.GetAsync("http://localhost:35459/API/Adress").Result;
-                return response.Content.ReadAsAsync<List<Adress>>().Result;
+                return response.Content.ReadAsAsync<IEnumerable<Adress>>().Result;
             }
-        }
-
-        public List<Adress> ReadAll(bool? asc)
-        {
-            throw new NotImplementedException();
         }
 
         public Adress Update(Adress t)
