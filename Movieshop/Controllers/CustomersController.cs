@@ -1,14 +1,7 @@
-﻿using System;
+﻿using DomainModel.DomainModel;
+using MoviesShopGateway;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using MoviesShopProxy.Context;
-using MoviesShopProxy.DomainModel;
-using MoviesShopProxy;
 
 namespace Movieshop.Controllers
 {
@@ -22,7 +15,7 @@ namespace Movieshop.Controllers
             bool sortDirection = asc.HasValue ? asc.Value : false;
             ViewBag.sortDirection = !sortDirection;
 
-            List<Customer> customers = facade.GetCustomerRepository().ReadAll(sortDirection);
+            List<Customer> customers = facade.GetCustomerGateway().ReadAll(sortDirection);
             return View(customers);
         }
 
@@ -30,7 +23,7 @@ namespace Movieshop.Controllers
         public ActionResult Details(int id)
         {
             
-            Customer customer = facade.GetCustomerRepository().Read(id);
+            Customer customer = facade.GetCustomerGateway().Read(id);
 
             return View(customer);
         }
@@ -47,7 +40,7 @@ namespace Movieshop.Controllers
         [HttpPost]
         public ActionResult Create(Customer customer)
         {
-                facade.GetCustomerRepository().Add(customer);
+                facade.GetCustomerGateway().Add(customer);
                 return RedirectToAction("Index");
             
         }
@@ -55,8 +48,8 @@ namespace Movieshop.Controllers
         // GET: Customers/Edit/5
         public ActionResult Edit(int id)
         {
-            Customer customer = facade.GetCustomerRepository().Read(id);
-            customer.Adress = facade.GetAddressRepository().Read(customer.Adress.Id);
+            Customer customer = facade.GetCustomerGateway().Read(id);
+            customer.Adress = facade.GetAddressGateway().Read(customer.Adress.Id);
             return View(customer);
         }
 
@@ -66,8 +59,8 @@ namespace Movieshop.Controllers
         public ActionResult Edit(Customer customer)
         {
 
-            facade.GetCustomerRepository().Update(customer);
-            facade.GetAddressRepository().Update(customer.Adress);
+            facade.GetCustomerGateway().Update(customer);
+            facade.GetAddressGateway().Update(customer.Adress);
             return RedirectToAction("Index");
         }
 
@@ -75,7 +68,7 @@ namespace Movieshop.Controllers
         public ActionResult Delete(int id)
         {
 
-            Customer customer = facade.GetCustomerRepository().Read(id);
+            Customer customer = facade.GetCustomerGateway().Read(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -88,7 +81,7 @@ namespace Movieshop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Customer customer)
         {
-            facade.GetCustomerRepository().Delete(customer);
+            facade.GetCustomerGateway().Delete(customer);
             return RedirectToAction("Index");
         }
 

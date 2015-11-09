@@ -206,6 +206,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
+      <Project>{b3c49f40-d6f2-4d42-b4a6-0d468e5612d4}</Project>
+      <Name>DomainModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MoviesShopGateway\MoviesShopGateway.csproj">
       <Project>{2fbac0d7-8608-40f4-87ef-e80049e52e91}</Project>
       <Name>MoviesShopGateway</Name>

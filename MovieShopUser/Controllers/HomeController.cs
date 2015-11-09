@@ -1,7 +1,7 @@
-﻿using MovieShopUser.Models;
+﻿using DomainModel.DomainModel;
+using MovieShopUser.Models;
 using MovieShopUser.Models.ViewModels;
-using MoviesShopProxy;
-using MoviesShopProxy.DomainModel;
+using MoviesShopGateway;
 using System;
 using System.Collections.Generic;
 using System.Linq;

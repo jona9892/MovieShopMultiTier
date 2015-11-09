@@ -19,5 +19,15 @@ namespace MoviesShopGateway
         {
             return new GenreGatewayService();
         }
+
+        public IGatewayService<Adress> GetAddressGateway()
+        {
+            return new AddressGatewayService();
+        }
+
+        public object GetCustomerGateway()
+        {
+            return new CustomerGatewayService();
+        }
     }
 }
