@@ -6,10 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MoviesShopProxy.Context;
-using MoviesShopProxy.DomainModel;
-using MoviesShopProxy;
 using Movieshop.Models.ViewModels;
+using MoviesShopGateway;
+using DomainModel.DomainModel;
 
 namespace Movieshop.Controllers
 {
@@ -20,16 +19,16 @@ namespace Movieshop.Controllers
         // GET: Orders
         public ActionResult Index(OrderViewModel model)
         {
-            model.orders = facade.GetOrderRepository().ReadAll();
-            model.customers = facade.GetCustomerRepository().ReadAll();
-            model.movies = facade.GetMovieRepository().ReadAll();
+            model.orders = facade.GetOrderGateway().ReadAll();
+            model.customers = facade.GetCustomerGateway().ReadAll();
+            model.movies = facade.GetMovieGateway().ReadAll();
             return View(model);
         }
 
         // GET: Orders/Details/5
         public ActionResult Details(int id)
         {
-            Order order = facade.GetOrderRepository().Read(id);
+            Order order = facade.GetOrderGateway().Read(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -49,14 +48,14 @@ namespace Movieshop.Controllers
         [HttpPost]
         public ActionResult Create(Order order)
         {
-                facade.GetOrderRepository().Add(order);
+                facade.GetOrderGateway().Add(order);
                 return RedirectToAction("Index");
         }
 
         // GET: Orders/Edit/5
         public ActionResult Edit(int id)
         {
-            Order order = facade.GetOrderRepository().Read(id);
+            Order order = facade.GetOrderGateway().Read(id);
 
             return View(order);
         }
@@ -67,14 +66,14 @@ namespace Movieshop.Controllers
         [HttpPost]
         public ActionResult Edit(Order order)
         {
-                facade.GetOrderRepository().Update(order);
+                facade.GetOrderGateway().Update(order);
                 return RedirectToAction("Index");
         }
 
         // GET: Orders/Delete/5
         public ActionResult Delete(int id)
         {
-            Order order = facade.GetOrderRepository().Read(id);
+            Order order = facade.GetOrderGateway().Read(id);
             return View(order);
         }
 
@@ -82,8 +81,8 @@ namespace Movieshop.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order order = facade.GetOrderRepository().Read(id);
-            facade.GetOrderRepository().Delete(order);
+            Order order = facade.GetOrderGateway().Read(id);
+            facade.GetOrderGateway().Delete(order);
             return RedirectToAction("Index");
         }
     }
