@@ -9,6 +9,7 @@ namespace MoviesShopGateway.Services
     public interface IGatewayService<T>
     {
         List<T> ReadAll();
+        List<T> ReadAll(bool? asc);
         T Read(int id);
         T Add(T t);
         T Update(T t);

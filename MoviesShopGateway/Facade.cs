@@ -25,7 +25,7 @@ namespace MoviesShopGateway
             return new AddressGatewayService();
         }
 
-        public object GetCustomerGateway()
+        public IGatewayService<Customer> GetCustomerGateway()
         {
             return new CustomerGatewayService();
         }

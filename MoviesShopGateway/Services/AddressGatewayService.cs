@@ -50,6 +50,11 @@ namespace MoviesShopGateway.Services
             }
         }
 
+        public List<Adress> ReadAll(bool? asc)
+        {
+            throw new NotImplementedException();
+        }
+
         public Adress Update(Adress t)
         {
             using (var client = new HttpClient())
