@@ -19,7 +19,7 @@ namespace MovieShopUser.Controllers
         {
             
 
-            var movies = facade.GetMovieRepository().ReadAll();
+            var movies = facade.GetMovieGateway().ReadAll();
 
             if (genreId.HasValue)
             {
@@ -37,7 +37,7 @@ namespace MovieShopUser.Controllers
 
         public ActionResult GenreDropDown()
         {
-            var genres = facade.GetGenreRepository().ReadAll().ToList();
+            var genres = facade.GetGenreGateway().ReadAll().ToList();
 
             return PartialView(genres);
         }
@@ -45,7 +45,7 @@ namespace MovieShopUser.Controllers
         [HttpGet]
         public ActionResult Verification(int movieId)
         {
-            var movie = facade.GetMovieRepository().Read(movieId);
+            var movie = facade.GetMovieGateway().Read(movieId);
             return View(movie);
         }
 
@@ -53,12 +53,12 @@ namespace MovieShopUser.Controllers
         public ActionResult CustomerEdit(string eMail, int movieId)
         {
 
-            var customers = facade.GetCustomerRepository().ReadAll();
+            var customers = facade.GetCustomerGateway().ReadAll();
 
 
             CustomerViewModel viewModel = new CustomerViewModel()
             {
-                Movie = facade.GetMovieRepository().Read(movieId),
+                Movie = facade.GetMovieGateway().Read(movieId),
                 Customer = customers.Where(x => x.Email == eMail).FirstOrDefault(),
                 Address = customers.Where(x => x.Email == eMail).FirstOrDefault().Adress
 
@@ -71,10 +71,10 @@ namespace MovieShopUser.Controllers
         [HttpPost]
         public ActionResult CustomerEdit(int movieId, Customer customer, Adress address)
         {
-            Movie movie = facade.GetMovieRepository().Read(movieId);
+            Movie movie = facade.GetMovieGateway().Read(movieId);
             customer.Adress = address;
-            facade.GetCustomerRepository().Update(customer);
-            facade.GetAddressRepository().Update(customer.Adress);
+            facade.GetCustomerGateway().Update(customer);
+            facade.GetAddressGateway().Update(customer.Adress);
 
             Order order = new Order()
             {
@@ -82,7 +82,7 @@ namespace MovieShopUser.Controllers
                 CustomerId = customer.Id,
                 MovieId = movieId
             };
-            facade.GetOrderRepository().Add(order);
+            facade.GetOrderGateway().Add(order);
 
             return RedirectToAction("OrderCompletion", new { movieId = movieId});
         }
@@ -91,7 +91,7 @@ namespace MovieShopUser.Controllers
         [HttpGet]
         public ActionResult OrderCompletion(int movieId)
         {
-            Movie movie = facade.GetMovieRepository().Read(movieId);
+            Movie movie = facade.GetMovieGateway().Read(movieId);
             return View(movie);            
         }
 
@@ -101,7 +101,7 @@ namespace MovieShopUser.Controllers
         {
             CustomerViewModel viewModel = new CustomerViewModel()
             {
-                Movie = facade.GetMovieRepository().Read(movieId)
+                Movie = facade.GetMovieGateway().Read(movieId)
             };
             return View(viewModel);
         }
@@ -112,11 +112,11 @@ namespace MovieShopUser.Controllers
             
             CustomerViewModel viewModel = new CustomerViewModel()
             {
-                Movie = facade.GetMovieRepository().Read(movieId)
+                Movie = facade.GetMovieGateway().Read(movieId)
                 
             };
             customer.Adress = address;
-            facade.GetCustomerRepository().Add(customer);
+            facade.GetCustomerGateway().Add(customer);
              
 
             Order order = new Order()
@@ -125,7 +125,7 @@ namespace MovieShopUser.Controllers
                 CustomerId = customer.Id,
                 MovieId = movieId
             };
-            facade.GetOrderRepository().Add(order);
+            facade.GetOrderGateway().Add(order);
             return View(viewModel);
         }
 
@@ -134,7 +134,7 @@ namespace MovieShopUser.Controllers
 
         public ActionResult Info(int id)
         {
-            return View(facade.GetMovieRepository().Read(id));
+            return View(facade.GetMovieGateway().Read(id));
         }
     }
 }

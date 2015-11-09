@@ -1,4 +1,5 @@
-﻿using MovieShopUser.Models;
+﻿using DomainModel.DomainModel;
+using MovieShopUser.Models;
 using MoviesShopGateway;
 using System;
 using System.Collections.Generic;

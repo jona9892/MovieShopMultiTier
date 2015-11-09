@@ -25,6 +25,11 @@ namespace MoviesShopGateway
             return new AddressGatewayService();
         }
 
+        public IGatewayService<Order> GetOrderGateway()
+        {
+            throw new NotImplementedException();
+        }
+
         public IGatewayService<Customer> GetCustomerGateway()
         {
             return new CustomerGatewayService();
