@@ -31,6 +31,7 @@ namespace MovieShopRest.Controllers
         }
 
         // PUT api/values/5
+        [HttpPut]
         public void PutGenre(int id)
         {
             var genre = new Facade().GetGenreRepository().Read(id);
@@ -38,6 +39,7 @@ namespace MovieShopRest.Controllers
         }
 
         // DELETE api/values/5
+        [HttpDelete]
         public void Delete(int id)
         {
             var genre = new Facade().GetGenreRepository().Read(id);
