@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DomainModel.DomainModel;
+using MoviesShopGateway;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,9 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MoviesShopProxy.Context;
-using MoviesShopProxy.DomainModel;
-using MoviesShopProxy;
+
 
 namespace Movieshop.Controllers
 {
@@ -23,7 +23,7 @@ namespace Movieshop.Controllers
             bool sortDirection = asc.HasValue ? asc.Value : false;
             ViewBag.sortDirection = !sortDirection;
 
-            List<Genre> genres = facade.GetGenreRepository().ReadAll(sortDirection);
+            List<Genre> genres = facade.GetGenreGateway().ReadAll(sortDirection);
             return View(genres);
         }
 
@@ -43,7 +43,7 @@ namespace Movieshop.Controllers
         {
             if (ModelState.IsValid)
             {
-                facade.GetGenreRepository().Add(genre);
+                facade.GetGenreGateway().Add(genre);
                 return RedirectToAction("Index");
             }
             return View(genre);
@@ -53,7 +53,7 @@ namespace Movieshop.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            Genre genreT = facade.GetGenreRepository().Read(id);
+            Genre genreT = facade.GetGenreGateway().Read(id);
             return View(genreT);
         }
 
@@ -62,7 +62,7 @@ namespace Movieshop.Controllers
         public ActionResult Edit([Bind(Include = "Id,Name")]Genre genre)
         {
             
-                facade.GetGenreRepository().Update(genre);
+                facade.GetGenreGateway().Update(genre);
                 return RedirectToAction("Index");
             
         }
@@ -70,7 +70,7 @@ namespace Movieshop.Controllers
         // GET: Genres/Delete/5
         public ActionResult Delete(int id)
         {
-            Genre genre = facade.GetGenreRepository().Read(id);
+            Genre genre = facade.GetGenreGateway().Read(id);
             if (genre == null)
             {
                 return HttpNotFound();
@@ -83,7 +83,7 @@ namespace Movieshop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Genre genre)
         {
-            facade.GetGenreRepository().Delete(genre);
+            facade.GetGenreGateway().Delete(genre);
             return RedirectToAction("Index");
         }
     }
