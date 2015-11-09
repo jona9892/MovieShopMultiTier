@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoviesShopGateway.Services
+namespace MoviesShopGateway.Services.Abstraction
 {
-    public interface IGatewayService<T>
+    public interface AbstractGatewayService<T>
     {
         IEnumerable<T> ReadAll();
         T Read(int id);

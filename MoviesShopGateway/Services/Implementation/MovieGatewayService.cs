@@ -1,16 +1,15 @@
-﻿using System;
-using Newtonsoft.Json.Linq;
+﻿using DomainModel.DomainModel;
+using MoviesShopGateway.Services.Abstraction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using DomainModel.DomainModel;
 
-namespace MoviesShopGateway.Services
+namespace MoviesShopGateway.Services.Implementation
 {
-    public class MovieGatewayService : IGatewayService<Movie>
+    public class MovieGatewayService : AbstractGatewayService<Movie>
     {
 
         public Movie Add(Movie movie)

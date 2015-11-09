@@ -1,4 +1,5 @@
 ﻿using DomainModel.DomainModel;
+using MoviesShopGateway.Services.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoviesShopGateway.Services
+namespace MoviesShopGateway.Services.Implementation
 {
-    public class CustomerGatewayService : IGatewayService<Customer>
+    public class CustomerGatewayService : ICustomerGatewayService<Customer>
     {
         public Customer Add(Customer t)
         {
@@ -28,6 +29,11 @@ namespace MoviesShopGateway.Services
                     client.DeleteAsync("http://localhost:35459/API/Customer" + t.Id).Result;
                 return response.Content.ReadAsAsync<Customer>().Result;
             }
+        }
+
+        public Customer getCustomer(string userEmail)
+        {
+            throw new NotImplementedException();
         }
 
         public Customer Read(int id)
@@ -50,7 +56,7 @@ namespace MoviesShopGateway.Services
             }
         }
 
-        
+
 
         public Customer Update(Customer t)
         {

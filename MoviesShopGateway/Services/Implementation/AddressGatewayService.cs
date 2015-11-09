@@ -1,4 +1,5 @@
 ﻿using DomainModel.DomainModel;
+using MoviesShopGateway.Services.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoviesShopGateway.Services
+namespace MoviesShopGateway.Services.Implementation
 {
-    class AddressGatewayService : IGatewayService<Adress>
+    class AddressGatewayService : AbstractGatewayService<Adress>
     {
         public Adress Add(Adress t)
         {

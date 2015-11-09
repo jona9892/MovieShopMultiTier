@@ -67,12 +67,14 @@
   <ItemGroup>
     <Compile Include="Facade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AddressGatewayService.cs" />
-    <Compile Include="Services\CustomerGatewayService.cs" />
-    <Compile Include="Services\GenreGatewayService.cs" />
-    <Compile Include="Services\IGatewayService.cs" />
-    <Compile Include="Services\MovieGatewayService.cs" />
-    <Compile Include="Services\OrderGatewayService.cs" />
+    <Compile Include="Services\Abstraction\AbstractGatewayService.cs" />
+    <Compile Include="Services\Abstraction\ICustomerGatewayService.cs" />
+    <Compile Include="Services\Abstraction\IOrderGatewayService.cs" />
+    <Compile Include="Services\Implementation\AddressGatewayService.cs" />
+    <Compile Include="Services\Implementation\CustomerGatewayService.cs" />
+    <Compile Include="Services\Implementation\GenreGatewayService.cs" />
+    <Compile Include="Services\Implementation\MovieGatewayService.cs" />
+    <Compile Include="Services\Implementation\OrderGatewayService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
@@ -84,6 +86,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
