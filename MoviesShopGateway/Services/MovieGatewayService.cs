@@ -65,7 +65,6 @@ namespace MoviesShopGateway.Services
 
         public List<Movie> ReadAll()
         {
-            throw new NotImplementedException();
         }
     }
 }

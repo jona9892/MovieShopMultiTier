@@ -48,7 +48,6 @@ namespace MoviesShopGateway.Services
 
         public List<Genre> ReadAll(bool? asc)
         {
-            throw new NotImplementedException();
         }
 
         public Genre Update(Genre t)
