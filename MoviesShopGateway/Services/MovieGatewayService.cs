@@ -62,12 +62,5 @@ namespace MoviesShopGateway.Services
                 return response.Content.ReadAsAsync<IEnumerable<Movie>>().Result;
             }
         }
-<<<<<<< HEAD
-=======
-
-        public List<Movie> ReadAll()
-        {
-        }
->>>>>>> 9fc9b2c17d9a54ea350b8a402c7ab7b96f0e5dc4
     }
 }
