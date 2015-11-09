@@ -63,6 +63,7 @@
     <Compile Include="Services\GenreGatewayService.cs" />
     <Compile Include="Services\IGatewayService.cs" />
     <Compile Include="Services\MovieGatewayService.cs" />
+    <Compile Include="Services\OrderGatewayService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
