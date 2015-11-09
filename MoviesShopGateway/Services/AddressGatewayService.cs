@@ -50,6 +50,13 @@ namespace MoviesShopGateway.Services
             }
         }
 
+<<<<<<< HEAD
+=======
+        public List<Adress> ReadAll(bool? asc)
+        {
+        }
+
+>>>>>>> 9fc9b2c17d9a54ea350b8a402c7ab7b96f0e5dc4
         public Adress Update(Adress t)
         {
             using (var client = new HttpClient())
