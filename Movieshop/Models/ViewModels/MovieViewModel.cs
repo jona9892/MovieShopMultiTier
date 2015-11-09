@@ -1,4 +1,4 @@
-﻿using MoviesShopProxy.DomainModel;
+﻿using DomainModel.DomainModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

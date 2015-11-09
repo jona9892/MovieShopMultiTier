@@ -1,10 +1,8 @@
-﻿using Movieshop.Models.ViewModels;
-using MoviesShopProxy;
-using MoviesShopProxy.DomainModel;
-using System;
+﻿using DomainModel.DomainModel;
+using Movieshop.Models.ViewModels;
+using MoviesShopGateway;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Movieshop.Controllers
@@ -12,6 +10,7 @@ namespace Movieshop.Controllers
     public class MoviesController : Controller
     {
         private Facade facade = new Facade();
+        
         // GET: Movies
         [HttpGet]
         public ActionResult Index(bool? asc)
@@ -19,7 +18,7 @@ namespace Movieshop.Controllers
             bool sortDirection = asc.HasValue ? asc.Value : false;
             ViewBag.sortDirection = !sortDirection;
 
-            List<Movie> movies = facade.GetMovieRepository().ReadAll(sortDirection);
+            List<Movie> movies = facade.GetMovieGateway().ReadAll(sortDirection);
             return View(movies);
         }
 
@@ -28,7 +27,7 @@ namespace Movieshop.Controllers
         {
             MovieViewModel viewModel = new MovieViewModel()
             {
-                Genres = facade.GetGenreRepository().ReadAll().ToList()
+                Genres = facade.GetGenreGateway().ReadAll().ToList()
             };
 
             return View(viewModel);
@@ -39,9 +38,9 @@ namespace Movieshop.Controllers
         {
             if (ModelState.IsValid)
             {
-                movie.Genre = facade.GetGenreRepository().Read(movie.Genre.Id);
+                movie.Genre = facade.GetGenreGateway().Read(movie.Genre.Id);
 
-                facade.GetMovieRepository().Add(movie);
+                facade.GetMovieGateway().Add(movie);
                 return Redirect("Index");
             }
             return View(movie);
@@ -52,8 +51,8 @@ namespace Movieshop.Controllers
         {
             MovieViewModel viewModel = new MovieViewModel()
             {
-                Movie = facade.GetMovieRepository().Read(Id),
-                Genres = facade.GetGenreRepository().ReadAll()
+                Movie = facade.GetMovieGateway().Read(Id),
+                Genres = facade.GetGenreGateway().ReadAll()
             };
             return View(viewModel);
         }
@@ -61,22 +60,22 @@ namespace Movieshop.Controllers
         [HttpPost]
         public ActionResult Update(Movie Movie)
         {
-            Movie.Genre = facade.GetGenreRepository().Read(Movie.Genre.Id);
-            facade.GetMovieRepository().Update(Movie);
+            Movie.Genre = facade.GetGenreGateway().Read(Movie.Genre.Id);
+            facade.GetMovieGateway().Update(Movie);
             return Redirect("~/Movies/Index");
         }
 
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            Movie movie = facade.GetMovieRepository().Read(id);
+            Movie movie = facade.GetMovieGateway().Read(id);
             return View(movie);
         }
 
         [HttpPost]
         public ActionResult Delete(Movie movie)
         {
-            facade.GetMovieRepository().Delete(movie);
+            facade.GetMovieGateway().Delete(movie);
             return Redirect("~/Movies/Index");
         }
     }

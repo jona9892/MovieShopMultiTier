@@ -1,6 +1,5 @@
 ﻿using MovieShopUser.Models;
-using MoviesShopProxy;
-using MoviesShopProxy.DomainModel;
+using MoviesShopGateway;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +18,7 @@ namespace MovieShopUser.Controllers
             {
                 Session["ShoppingCart"] = new ShoppingCart();
             }
-            return View(facade.GetOrderRepository().ReadAll());
+            return View(facade.GetOrderGateway().ReadAll());
         }
 
         [HttpGet]
