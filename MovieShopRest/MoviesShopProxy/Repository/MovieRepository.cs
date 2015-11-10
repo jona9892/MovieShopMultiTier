@@ -38,9 +38,7 @@ namespace MovieShopDAL.Repository
 
         public Movie Read(int movieId)
         {
-            
-                return ctx.Movies.Include("Genre").FirstOrDefault(item => item.Id == movieId);
-            
+            return ctx.Movies.Include("Genre").FirstOrDefault(item => item.Id == movieId);
         }
 
         public Movie Update(Movie movie)

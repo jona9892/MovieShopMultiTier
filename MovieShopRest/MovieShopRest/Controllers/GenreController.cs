@@ -32,10 +32,20 @@ namespace MovieShopRest.Controllers
 
         // PUT api/values/5
         [HttpPut]
-        public void PutGenre(int id)
+        public Genre UpdateGenre(int id, Genre genre)
         {
-            var genre = new Facade().GetGenreRepository().Read(id);
-            new Facade().GetGenreRepository().Update(genre);
+            if(genre == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            else
+            {
+                genre.Id = id;
+                var genreUpdated = new Facade().GetGenreRepository().Read(id);
+                new Facade().GetGenreRepository().Update(genre);
+                return genre;
+            }
+            
         }
 
         // DELETE api/values/5

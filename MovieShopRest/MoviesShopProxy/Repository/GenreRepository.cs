@@ -39,8 +39,7 @@ namespace MovieShopDAL.Repository
 
         public Genre Read(int genreID)
         {
-                return ctx.Genres.FirstOrDefault(item => item.Id == genreID);
-            
+           return ctx.Genres.FirstOrDefault(item => item.Id == genreID);   
         }
 
         public Genre Update(Genre genre)
