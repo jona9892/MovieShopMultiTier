@@ -1,14 +1,15 @@
-﻿using System;
+﻿using DomainModel.DomainModel;
+using MoviesShopGateway.Services.Abstraction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using DomainModel.DomainModel;
-using System.Net.Http;
 
-namespace MoviesShopGateway.Services
+namespace MoviesShopGateway.Services.Implementation
 {
-    public class OrderGatewayService : IGatewayService<Order>
+    public class OrderGatewayService : IOrderGatewayService<Order>
     {
         public Order Add(Order t)
         {

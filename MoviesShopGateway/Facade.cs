@@ -3,34 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MoviesShopGateway.Services;
 using DomainModel.DomainModel;
+using MoviesShopGateway.Services.Abstraction;
+using MoviesShopGateway.Services.Implementation;
 
 namespace MoviesShopGateway
 {
     public class Facade
     {
-        public IGatewayService<Movie> GetMovieGateway()
+        public AbstractGatewayService<Movie> GetMovieGateway()
         {
             return new MovieGatewayService();
         }
 
-        public IGatewayService<Genre> GetGenreGateway()
+        public AbstractGatewayService<Genre> GetGenreGateway()
         {
             return new GenreGatewayService();
         }
 
-        public IGatewayService<Adress> GetAddressGateway()
+        public AbstractGatewayService<Adress> GetAddressGateway()
         {
             return new AddressGatewayService();
         }
 
-        public IGatewayService<Order> GetOrderGateway()
+        public IOrderGatewayService<Order> GetOrderGateway()
         {
             throw new NotImplementedException();
         }
 
-        public IGatewayService<Customer> GetCustomerGateway()
+        public ICustomerGatewayService<Customer> GetCustomerGateway()
         {
             return new CustomerGatewayService();
         }
