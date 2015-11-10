@@ -13,7 +13,7 @@ namespace MovieShopUser.Controllers
 { 
     public class HomeController : Controller
     {
-
+        Converter converter = new Converter();
         Facade facade = new Facade();
 
         public ActionResult Index(int? genreId, string searchString = "")
@@ -134,7 +134,10 @@ namespace MovieShopUser.Controllers
 
         public ActionResult Info(int id)
         {
-            return View(facade.GetMovieGateway().Read(id));
+            InfoViewModel ivm = new InfoViewModel();
+            ivm.Movie = facade.GetMovieGateway().Read(id);
+            ivm.ValutaData = converter;
+            return View(ivm);
         }
     }
 }

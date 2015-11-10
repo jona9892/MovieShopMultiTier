@@ -1,4 +1,4 @@
-﻿@model DomainModel.DomainModel.Movie
+﻿@model MovieShopUser.Models.ViewModels.InfoViewModel
 
 @{
     ViewBag.Title = "Info";
@@ -51,24 +51,24 @@
 <div class="content">
 
     <div class="img-rounded" style="background-color:rgba(128, 128, 128,0.5);">
-    <h2 style="text-align:center;">@Model.Title - @Model.Year</h2>
+    <h2 style="text-align:center;">@Model.Movie.Title - @Model.Movie.Year</h2>
     </div>
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4">
                 <div class="img-responsive">
-                    <img class="img-responsive" src="@Model.imageURL" />
+                    <img class="img-responsive" src="@Model.Movie.imageURL" />
                 </div>
             </div>
        
             <div class="col-sm-8">
                 <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="@Model.trailerURL"></iframe>
+                    <iframe class="embed-responsive-item" src="@Model.Movie.trailerURL"></iframe>
                 </div>
             </div>
         </div>
     </div>
 </div>
-        <td class="col-md-4">@Html.ActionLink("Buy " + @Model.Price + "$", "Verification", "Home", new { movieId = Model.Id }, new { @class = "btn btn-default" })  </td>
-<td class="col-md-4">@Html.ActionLink("Add to Cart", "Index", "Home", new { shoppingCartId = Model.Id }, new { @class = "btn btn-default" }) </td>
+        <td class="col-md-4">@Html.ActionLink("Buy " + @Model.Movie.Price + "DKK", "Verification", "Home", new { movieId = Model.Movie.Id }, new { @class = "btn btn-default" })  </td>
+<td class="col-md-4">@Html.ActionLink("Add to Cart", "Index", "Home", new { shoppingCartId = Model.Movie.Id }, new { @class = "btn btn-default" }) </td>

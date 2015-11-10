@@ -26,4 +26,4 @@ namespace CurrencyConverter
         public double JPY { get; set; }
     }
 }
-}
+
