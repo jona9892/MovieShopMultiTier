@@ -9,39 +9,38 @@ using System.Web.Http;
 
 namespace MovieShopRest.Controllers
 {
-    public class CustomerController : ApiController
+    public class AddressController : ApiController
     {
         private Facade facade = new Facade();
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<Adress> GetCustomers()
         {
-            return new Facade().GetCustomerRepository().ReadAll();
+            return new Facade().GetAddressRepository().ReadAll();
         }
 
         // GET api/values/5
-        public Customer Get(int id)
+        public Adress Get(int id)
         {
-            return new Facade().GetCustomerRepository().Read(id);
+            return new Facade().GetAddressRepository().Read(id);
         }
 
         // POST api/values
-        public Customer PostCustomer(Customer customer)
+        public Adress PostAdress(Adress adress)
         {
-            return new Facade().GetCustomerRepository().Add(customer);
+            return new Facade().GetAddressRepository().Add(adress);
         }
 
         // PUT api/values/5
-        public void PutCustomer(int id, Customer customer)
+        public void PutAdress(int id, Adress adress)
         {
-            if (customer == null)
+            if (adress == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             else
             {
-                customer.Id = id;
-
-                var updatedCustomer = new Facade().GetCustomerRepository().Read(id);
-                new Facade().GetCustomerRepository().Update(customer);
+                adress.Id = id;
+                
+                new Facade().GetAddressRepository().Update(adress);
             }
         }
 

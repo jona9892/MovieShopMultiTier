@@ -41,7 +41,7 @@ namespace MovieShopRest.Controllers
             else
             {
                 genre.Id = id;
-                var genreUpdated = new Facade().GetGenreRepository().Read(id);
+                
                 new Facade().GetGenreRepository().Update(genre);
                 return genre;
             }

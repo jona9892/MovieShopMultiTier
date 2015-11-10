@@ -29,10 +29,20 @@ namespace MovieShopRest.Controllers
         }
 
         // PUT api/values/5
-        public void PutMovie(int id)
+        public Movie PutMovie(int id, Movie movie)
         {
-            var movie = new Facade().GetMovieRepository().Read(id);
-            new Facade().GetMovieRepository().Update(movie);
+            if (movie == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            else
+            {
+                movie.Id = id;
+
+                
+                new Facade().GetMovieRepository().Update(movie);
+                return movie;
+            }
         }
 
         // DELETE api/values/5

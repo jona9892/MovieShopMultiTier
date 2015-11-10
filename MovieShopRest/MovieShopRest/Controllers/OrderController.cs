@@ -31,10 +31,11 @@ namespace MovieShopRest.Controllers
         }
 
         // PUT api/values/5
-        public void PutOrder(int id)
+        public Order PutOrder(int id, Order order)
         {
-            var order = new Facade().GetOrderRepository().Read(id);
+            order.Id = id;
             new Facade().GetOrderRepository().Update(order);
+            return order;
         }
 
         // DELETE api/values/5
