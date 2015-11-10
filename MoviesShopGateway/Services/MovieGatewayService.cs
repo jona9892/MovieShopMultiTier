@@ -18,7 +18,7 @@ namespace MoviesShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PostAsJsonAsync("http://localhost:35459/API/Movie", movie).Result;
+                    client.PostAsJsonAsync("http://localhost:35459/API/Movie/", movie).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }
@@ -27,8 +27,9 @@ namespace MoviesShopGateway.Services
         {
             using (var client = new HttpClient())
             {
+                //Returns deserialized movie data object with given id from our Wep API local host (readasAsync uses Jsonformatter)
                 HttpResponseMessage response =
-                    client.GetAsync("http://localhost:35459/API/Movie" + id).Result;
+                    client.GetAsync("http://localhost:35459/API/Movie/" + id).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }
@@ -38,7 +39,7 @@ namespace MoviesShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PutAsJsonAsync("http://localhost:35459/API/Movie", t).Result;
+                    client.PutAsJsonAsync("http://localhost:35459/API/Movie/", t).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }
@@ -48,7 +49,7 @@ namespace MoviesShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.DeleteAsync("http://localhost:35459/API/Movie" + t.Id).Result;
+                    client.DeleteAsync("http://localhost:35459/API/Movie/" + t.Id).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }

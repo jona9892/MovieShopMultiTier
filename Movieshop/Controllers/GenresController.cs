@@ -56,7 +56,7 @@ namespace Movieshop.Controllers
 
         // POST: Genres/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Name")]Genre genre)
+        public ActionResult Edit(Genre genre)
         {
             
                 facade.GetGenreGateway().Update(genre);
