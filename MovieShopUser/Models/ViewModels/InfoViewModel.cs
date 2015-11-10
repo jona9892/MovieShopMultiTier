@@ -10,6 +10,6 @@ namespace MovieShopUser.Models.ViewModels
     public class InfoViewModel
     {
         public Movie Movie { get; set; }
-        public Converter ValutaData { get; set; }
+        public ValutaData ValutaData { get; set; }
     }
 }

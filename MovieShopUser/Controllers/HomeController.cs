@@ -136,7 +136,7 @@ namespace MovieShopUser.Controllers
         {
             InfoViewModel ivm = new InfoViewModel();
             ivm.Movie = facade.GetMovieGateway().Read(id);
-            ivm.ValutaData = converter;
+            ivm.ValutaData = converter.valutaData;
             return View(ivm);
         }
     }

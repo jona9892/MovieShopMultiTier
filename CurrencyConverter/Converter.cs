@@ -11,7 +11,7 @@ namespace CurrencyConverter
 {
     public class Converter
     {
-        ValutaData valutaData = new ValutaData();
+        public ValutaData valutaData = new ValutaData();
         public string ValutaAPIURL = "http://api.fixer.io/latest?base=DKK";
         public Converter()
         {
