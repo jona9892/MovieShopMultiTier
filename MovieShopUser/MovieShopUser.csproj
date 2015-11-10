@@ -214,6 +214,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CurrencyConverter\CurrencyConverter.csproj">
+      <Project>{fea48a19-1c49-4d3e-98c2-5b7cf8b9141a}</Project>
+      <Name>CurrencyConverter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
       <Project>{b3c49f40-d6f2-4d42-b4a6-0d468e5612d4}</Project>
       <Name>DomainModel</Name>

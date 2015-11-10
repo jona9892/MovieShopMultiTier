@@ -1,4 +1,5 @@
-﻿using DomainModel.DomainModel;
+﻿using CurrencyConverter;
+using DomainModel.DomainModel;
 using MovieShopUser.Models;
 using MovieShopUser.Models.ViewModels;
 using MoviesShopGateway;
@@ -17,7 +18,7 @@ namespace MovieShopUser.Controllers
 
         public ActionResult Index(int? genreId, string searchString = "")
         {
-            
+            new Converter();
 
             var movies = facade.GetMovieGateway().ReadAll();
 
