@@ -13,16 +13,17 @@ namespace CurrencyConverter
     public class Rates
     {
         //Euro
-        public int EUR { get; set; }
+        public double EUR { get; set; }
         //US Dollar
-        public int USD { get; set; }
+        public double USD { get; set; }
         //Canadian Dollar
-        public int CAD { get; set; }
+        public double CAD { get; set; }
         //Great British Pound
-        public int GBP { get; set; }
+        public double GBP { get; set; }
         //Chinese Yen
-        public int CNY { get; set; }
+        public double CNY { get; set; }
         //Japanese Yen
-        public int JPY { get; set; }
+        public double JPY { get; set; }
     }
+}
 }

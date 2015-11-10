@@ -11,16 +11,11 @@ namespace CurrencyConverter
 {
     public class Converter
     {
-        Rates rates = new Rates();
+        ValutaData valutaData = new ValutaData();
         public string ValutaAPIURL = "http://api.fixer.io/latest?base=DKK";
         public Converter()
         {
             StartupDataLoad();
-        }
-
-        public static void Main(String[] args)
-        {
-            new Converter();
         }
 
         private void StartupDataLoad()
@@ -28,10 +23,51 @@ namespace CurrencyConverter
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.GetAsync("http://api.fixer.io/latest?base=DKK").Result;
-                rates = response.Content.ReadAsAsync<Rates>().Result;
+                    client.GetAsync(ValutaAPIURL).Result;
+                valutaData = response.Content.ReadAsAsync<ValutaData>().Result;
             }
         }
 
+        public int DkkToEur(int dkkAmount)
+        {
+            double amount = dkkAmount * valutaData.Rates.EUR;
+            int result = Convert.ToInt32(amount);
+            return result;
+        }
+
+        public int DkkToUsd(int dkkAmount)
+        {
+            double amount = dkkAmount * valutaData.Rates.USD;
+            int result = Convert.ToInt32(amount);
+            return result;
+        }
+
+        public int DkkToGbp(int dkkAmount)
+        {
+            double amount = dkkAmount * valutaData.Rates.GBP;
+            int result = Convert.ToInt32(amount);
+            return result;
+        }
+
+        public int DkkToCny(int dkkAmount)
+        {
+            double amount = dkkAmount * valutaData.Rates.CNY;
+            int result = Convert.ToInt32(amount);
+            return result;
+        }
+
+        public int DkkToJpy(int dkkAmount)
+        {
+            double amount = dkkAmount * valutaData.Rates.JPY;
+            int result = Convert.ToInt32(amount);
+            return result;
+        }
+
+        public int DkkToCad(int dkkAmount)
+        {
+            double amount = dkkAmount * valutaData.Rates.CAD;
+            int result = Convert.ToInt32(amount);
+            return result;
+        }
     }
 }
