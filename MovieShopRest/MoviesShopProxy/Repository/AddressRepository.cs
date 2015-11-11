@@ -32,9 +32,7 @@ namespace MovieShopDAL.Repository
 
         public List<Adress> ReadAll()
         {
-            
                     return ctx.Adresses.ToList();
-            
         }
 
         public Adress Read(int addressID)
@@ -46,7 +44,6 @@ namespace MovieShopDAL.Repository
 
         public Adress Update(Adress address)
         {
-            
                 var addressDB = ctx.Adresses.FirstOrDefault(item => item.Id == address.Id);
                 addressDB.StreetName = address.StreetName;
                 addressDB.StreetNumber = address.StreetNumber;
@@ -54,8 +51,6 @@ namespace MovieShopDAL.Repository
                 addressDB.Country = address.Country;
                 ctx.SaveChanges();
                 return address;
-
-            
         }
 
         public Adress Delete(Adress address)

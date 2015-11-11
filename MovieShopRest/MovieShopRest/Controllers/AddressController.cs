@@ -30,7 +30,7 @@ namespace MovieShopRest.Controllers
         }
 
         // PUT api/values/5
-        public void PutAdress(int id, Adress adress)
+        public Adress PutAdress(int id, Adress adress)
         {
             if (adress == null)
             {
@@ -41,6 +41,7 @@ namespace MovieShopRest.Controllers
                 adress.Id = id;
                 
                 new Facade().GetAddressRepository().Update(adress);
+                return adress;
             }
         }
 

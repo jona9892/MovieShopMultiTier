@@ -31,10 +31,7 @@ namespace MovieShopDAL.Repository
 
         public List<Genre> ReadAll()
         {
-            
-                return ctx.Genres.ToList();
-                
-            
+                return ctx.Genres.ToList();            
         }
 
         public Genre Read(int genreID)

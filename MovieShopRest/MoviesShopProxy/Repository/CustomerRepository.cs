@@ -32,16 +32,12 @@ namespace MovieShopDAL.Repository
 
         public List<Customer> ReadAll()
         {
-            
                 return ctx.Customers.Include("Adress").ToList();
-            
         }
 
         public Customer Read(int customerID)
         {
-          
                 return ctx.Customers.Include("Adress").FirstOrDefault(item => item.Id == customerID);
-            
         }
 
         public Customer Update(Customer customer)

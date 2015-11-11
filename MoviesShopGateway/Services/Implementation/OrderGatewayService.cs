@@ -16,7 +16,7 @@ namespace MoviesShopGateway.Services.Implementation
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PostAsJsonAsync("http://localhost:35459/API/Orders", t).Result;
+                    client.PostAsJsonAsync("http://localhost:35459/API/Orders/", t).Result;
                 return response.Content.ReadAsAsync<Order>().Result;
             }
         }
@@ -26,7 +26,7 @@ namespace MoviesShopGateway.Services.Implementation
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.DeleteAsync("http://localhost:35459/API/Orders" + t.Id).Result;
+                    client.DeleteAsync("http://localhost:35459/API/Order/" + t.Id).Result;
                 return response.Content.ReadAsAsync<Order>().Result;
             }
         }
@@ -36,7 +36,7 @@ namespace MoviesShopGateway.Services.Implementation
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.GetAsync("http://localhost:35459/API/Orders" + id).Result;
+                    client.GetAsync("http://localhost:35459/API/Order/" + id).Result;
                 return response.Content.ReadAsAsync<Order>().Result;
             }
         }
@@ -46,7 +46,7 @@ namespace MoviesShopGateway.Services.Implementation
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.GetAsync("http://localhost:35459/API/Orders").Result;
+                    client.GetAsync("http://localhost:35459/API/Order/").Result;
                 return response.Content.ReadAsAsync<IEnumerable<Order>>().Result;
             }
         }
@@ -56,7 +56,7 @@ namespace MoviesShopGateway.Services.Implementation
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PutAsJsonAsync("http://localhost:35459/API/Orders" + t.Id, t).Result;
+                    client.PutAsJsonAsync("http://localhost:35459/API/Order/" + t.Id, t).Result;
                 return response.Content.ReadAsAsync<Order>().Result;
             }
         }

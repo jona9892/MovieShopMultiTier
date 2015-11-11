@@ -8,7 +8,11 @@ namespace Movieshop.Models.ViewModels
 {
     public class CustomerViewModel
     {  
-        public Customer Customer { get; set; }
-        public Adress Address { get; set; }
+        public CustomerViewModel()
+        {
+            Addresses = new List<Adress>();
+        }
+        public Customer customer { get; set; }
+        public IEnumerable<Adress> Addresses { get; set; }
     }
 }

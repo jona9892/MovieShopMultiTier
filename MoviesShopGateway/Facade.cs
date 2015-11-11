@@ -28,7 +28,7 @@ namespace MoviesShopGateway
 
         public IOrderGatewayService<Order> GetOrderGateway()
         {
-            throw new NotImplementedException();
+            return new OrderGatewayService();
         }
 
         public ICustomerGatewayService<Customer> GetCustomerGateway()

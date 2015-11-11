@@ -30,7 +30,7 @@ namespace MovieShopRest.Controllers
         }
 
         // PUT api/values/5
-        public void PutCustomer(int id, Customer customer)
+        public Customer PutCustomer(int id, Customer customer)
         {
             if (customer == null)
             {
@@ -39,9 +39,10 @@ namespace MovieShopRest.Controllers
             else
             {
                 customer.Id = id;
-
-                var updatedCustomer = new Facade().GetCustomerRepository().Read(id);
+                
                 new Facade().GetCustomerRepository().Update(customer);
+                new Facade().GetAddressRepository().Update(customer.Adress);
+                return customer;
             }
         }
 
