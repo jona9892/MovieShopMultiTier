@@ -16,7 +16,7 @@ namespace MoviesShopGateway.Services.Implementation
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PostAsJsonAsync("http://localhost:35459/API/Orders/", t).Result;
+                    client.PostAsJsonAsync("http://localhost:35459/API/Order/", t).Result;
                 return response.Content.ReadAsAsync<Order>().Result;
             }
         }
