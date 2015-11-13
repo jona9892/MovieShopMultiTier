@@ -1,0 +1,70 @@
+﻿@model MovieShopUser.Models.RegisterModel
+
+@{
+    ViewBag.Title = "NewCustomer";
+}
+
+<h2>NewCustomer</h2>
+
+<form method="post" action="~/Customer/NewCustomer" class="col-md-12">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.FirstName)
+        @Html.TextBoxFor(c => c.Customer.FirstName, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.FirstName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.LastName)
+        @Html.TextBoxFor(c => c.Customer.LastName, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.LastName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Adress.StreetName)
+        @Html.TextBoxFor(c => c.Customer.Adress.StreetName, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Adress.StreetName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Adress.StreetNumber)
+        @Html.TextBoxFor(c => c.Customer.Adress.StreetNumber, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Adress.StreetNumber, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Adress.Zipcode)
+        @Html.TextBoxFor(c => c.Customer.Adress.Zipcode, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Adress.Zipcode, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Adress.Country)
+        @Html.TextBoxFor(c => c.Customer.Adress.Country, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Adress.Country, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Email)
+        @Html.TextBoxFor(c => c.Customer.Email, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Password)
+        @Html.TextBoxFor(c => c.Password, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.VerifiedPassword)
+        @Html.TextBoxFor(c => c.VerifiedPassword, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.VerifiedPassword, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class=".btn-default">Create</button>
+    </div>
+</form>

@@ -15,11 +15,18 @@ namespace MovieShopUser.Controllers
         // GET: Cart
         public ActionResult Index()
         {
-            if(Session["ShoppingCart"] == null)
+            ShoppingCart cart = Session["ShoppingCart"] as ShoppingCart;
+            List<OrderLine> lines;
+
+            if (cart == null)
             {
-                Session["ShoppingCart"] = new ShoppingCart();
+                lines = new List<OrderLine>();
             }
-            return View(facade.GetOrderGateway().ReadAll());
+            else
+            {
+                lines = cart.OrderLines;
+            }
+            return View(lines);
         }
 
         [HttpGet]
@@ -59,6 +66,51 @@ namespace MovieShopUser.Controllers
         {
            
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AddToCart(int movieId)
+        {
+            ShoppingCart cart = Session["ShoppingCart"] as ShoppingCart;
+            if (cart == null)
+            {
+                cart = new ShoppingCart();
+            }
+
+            Movie movie = facade.GetMovieGateway().Read(movieId);
+            OrderLine line = new OrderLine() { Movie = movie, Amount = 1};
+            cart.AddOrderLine(line);
+
+            Session["ShoppingCart"] = cart;
+            return Redirect("Index");
+        }
+
+        public ActionResult CompleteOrder()
+        {
+            try
+            {
+                int userId = (int)Session["UserId"];
+                int customer = facade.GetCustomerGateway().Read(userId).Id;
+                ShoppingCart cart = Session["ShoppingCart"] as ShoppingCart;
+                for (int i = 0; i < cart.OrderLines.Count; i++)
+                {
+                    cart.OrderLines[i].MovieId = cart.OrderLines[i].MovieId;
+                }
+                Order order = new Order()
+                {
+                    CustomerId = customer,
+                    Date = DateTime.Now,
+                    OrderLines = cart.OrderLines
+                };
+                facade.GetOrderGateway().Add(order);
+
+                cart.OrderLines = new List<OrderLine>();
+                Session["ShoppingCart"] = cart;
+                return View("OrderCompletion");
+            }
+            catch
+            {
+                return View("OrderCompletion");
+            }
         }
 
     }

@@ -19,10 +19,8 @@ namespace MovieShopDAL.DomainModel
         public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
-        
-        public int MovieId { get; set; }
-        [ForeignKey("MovieId")]
-        public virtual Movie  Movie { get; set; }
+
+        public List<OrderLine> OrderLines { get; set; }
 
         public DateTime Date { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DomainModel.DomainModel
 {
@@ -7,8 +8,7 @@ namespace DomainModel.DomainModel
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
-        public int MovieId { get; set; }
-        public virtual Movie  Movie { get; set; }
+        public List<OrderLine> OrderLines { get; set; }
         public DateTime Date { get; set; }
     }
 }

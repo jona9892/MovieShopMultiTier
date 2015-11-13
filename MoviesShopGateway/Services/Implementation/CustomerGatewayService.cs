@@ -33,8 +33,16 @@ namespace MoviesShopGateway.Services.Implementation
 
         public Customer getCustomer(string userEmail)
         {
-            throw new NotImplementedException();
-        }
+            using (var client = new HttpClient())
+            {
+                HttpResponseMessage response =
+                    client.GetAsync("http://localhost:35459/API/Customer/").Result;
+                var list = response.Content.ReadAsAsync<List<Customer>>().Result;
+
+                return list.FirstOrDefault(x => x.Email.Equals(userEmail));
+               }
+            }
+        
 
         public Customer Read(int id)
         {

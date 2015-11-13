@@ -23,6 +23,11 @@ namespace MovieShopRest.Controllers
             return new Facade().GetCustomerRepository().Read(id);
         }
 
+        public Customer Get(string email)
+        {
+            return new Facade().GetCustomerRepository().GetCustomer(email);
+        }
+
         // POST api/values
         public Customer PostCustomer(Customer customer)
         {

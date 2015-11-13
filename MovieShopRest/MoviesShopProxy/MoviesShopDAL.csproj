@@ -71,6 +71,7 @@
     <Compile Include="Repository\AddressRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\GenreRepository.cs" />
+    <Compile Include="Repository\ICustomerRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
     <Compile Include="Repository\OrderRepository.cs" />

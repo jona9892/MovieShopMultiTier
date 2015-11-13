@@ -14,7 +14,7 @@ namespace MovieShopDAL
     {
         private IRepository<Movie> movieRepo;
         private IRepository<Genre> genreRepo;
-        private IRepository<Customer> customerRepo;
+        private ICustomerRepository<Customer> customerRepo;
         private IRepository<Order> orderRepo;
         private IRepository<Adress> addressRepo;
         private MovieShopContextDB ctx = new MovieShopContextDB();
@@ -38,7 +38,7 @@ namespace MovieShopDAL
             return genreRepo;
         }
 
-        public IRepository<Customer> GetCustomerRepository()
+        public ICustomerRepository<Customer> GetCustomerRepository()
         {
             if (customerRepo == null)
             {

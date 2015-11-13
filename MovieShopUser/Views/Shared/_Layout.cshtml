@@ -9,6 +9,32 @@
 </head>
 <body>
     <div class="container body-content">
+        
+        <div class="container-fluid pull-right" style="clear:both;">
+            <ul class="nav navbar-nav">
+                @if (Session["Username"] != null)
+                {
+                    <li>@Html.ActionLink(Session["Username"] as string, "UserProfile", "customer")</li>
+                        <li>@Html.ActionLink("Logout", "Userlogout", "customer")</li>
+                }
+                else
+                {
+
+                    <li>
+                        <form method="post" action="~/Customer/UserLogin">
+                            @Html.TextBox("UserEmail")
+                            @Html.Password("Password")
+                            <button type="submit" class="btn btn-default">Log in</button>
+                            @Html.ActionLink("Register", "NewCustomer", "customer", new { @class = "btn btn-default pull-right", style = "margin-left:3px;" })
+
+                    </form>
+                    </li>
+                }
+            </ul>
+
+        </div>
+
+
         @RenderBody()
     </div>
 

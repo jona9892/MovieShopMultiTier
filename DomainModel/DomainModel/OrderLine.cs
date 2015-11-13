@@ -1,6 +1,6 @@
 ﻿using DomainModel.DomainModel;
 
-namespace MovieShopUser.Models
+namespace DomainModel.DomainModel
 {
     public class OrderLine
     {

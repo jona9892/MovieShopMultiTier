@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MovieShopDAL.Repository
 {
-    public class CustomerRepository : IRepository<Customer>
+    public class CustomerRepository : ICustomerRepository<Customer>
     {
 
         MovieShopContextDB ctx;
@@ -29,7 +29,6 @@ namespace MovieShopDAL.Repository
             
         }
 
-
         public List<Customer> ReadAll()
         {
                 return ctx.Customers.Include("Adress").ToList();
@@ -38,6 +37,12 @@ namespace MovieShopDAL.Repository
         public Customer Read(int customerID)
         {
                 return ctx.Customers.Include("Adress").FirstOrDefault(item => item.Id == customerID);
+        }
+
+        public Customer GetCustomer(string email)
+        {
+            var customer = ctx.Customers.Include("Address").FirstOrDefault(x => x.Email.Equals(email));
+            return customer;
         }
 
         public Customer Update(Customer customer)
@@ -63,6 +68,5 @@ namespace MovieShopDAL.Repository
                 return customer;
             
         }
-
     }
 }

@@ -80,7 +80,7 @@ namespace MovieShopUser.Controllers
             {
                 Date = DateTime.Now,
                 CustomerId = customer.Id,
-                MovieId = movieId
+                //MovieId = movieId
             };
             facade.GetOrderGateway().Add(order);
 
@@ -123,7 +123,7 @@ namespace MovieShopUser.Controllers
             {
                 Date = DateTime.Now,
                 CustomerId = customer.Id,
-                MovieId = movieId
+                //MovieId = movieId
             };
             facade.GetOrderGateway().Add(order);
             return View(viewModel);
