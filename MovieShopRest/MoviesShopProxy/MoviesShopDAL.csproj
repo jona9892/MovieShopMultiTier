@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\MovieShopContextDB.cs" />
-    <Compile Include="DomainModel\MovieShopDBInitializer.cs" />
+    <Compile Include="Context\MovieShopDBInitializer.cs" />
     <Compile Include="DomainModel\Adress.cs" />
     <Compile Include="DomainModel\Customer.cs" />
     <Compile Include="DomainModel\Genre.cs" />

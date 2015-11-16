@@ -1,0 +1,61 @@
+﻿@model DomainModel.DomainModel.Customer
+
+@{
+    ViewBag.Title = "ChangeAddress";
+}
+
+<h2>ChangeAddress</h2>
+
+<form method="post" action="~/Customer/ChangeAddress" class="col-md-12">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.FirstName)
+        @Html.TextBoxFor(c => c.FirstName, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.FirstName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.LastName)
+        @Html.TextBoxFor(c => c.LastName, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.LastName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Email)
+        @Html.TextBoxFor(c => c.Email, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Adress.StreetName)
+        @Html.TextBoxFor(c => c.Adress.StreetName, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Adress.StreetName, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Adress.StreetNumber)
+        @Html.TextBoxFor(c => c.Adress.StreetNumber, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Adress.StreetNumber, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Adress.Zipcode)
+        @Html.TextBoxFor(c => c.Adress.Zipcode, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Adress.Zipcode, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Adress.Country)
+        @Html.TextBoxFor(c => c.Adress.Country, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Adress.Country, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class=".btn-default">Save</button>
+    </div>
+</form>

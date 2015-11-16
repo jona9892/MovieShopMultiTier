@@ -69,5 +69,29 @@ namespace MovieShopUser.Controllers
             }
             return View(registerModel);
         }
+
+        [HttpGet]
+        public ActionResult ChangeAddress()
+        {
+            return View(facade.GetCustomerGateway().Read((int)Session["UserId"]));
+        }
+
+        [HttpPost]
+        public ActionResult ChangeAddress(Customer customer)
+        {
+            ModelState.Remove("Password");
+            if (ModelState.IsValid)
+            {
+                Session["UserName"] = customer.FirstName + " " + customer.LastName;
+                customer.Id = (int)Session["UserId"];
+                facade.GetCustomerGateway().Update(customer);
+
+                return RedirectToAction("UserProfile");
+            }
+            else
+            {
+                return View(customer);
+            }
+        }
     }
 }

@@ -3,5 +3,11 @@
     ViewBag.Title = "UserProfile";
 }
 
-<h2>UserProfile</h2>
+<h2>@Session["UserName"]</h2>
+<ul>
+    @*<li>@Html.ActionLink("Change password", "ChangePassword", "Customer")</li>*@
+    <li>@Html.ActionLink("Change Address information", "ChangeAddress", "Customer")</li>
+    @*<li>@Html.ActionLink("View orders", "ViewOrders", "Home")</li>*@
+
+</ul>
 

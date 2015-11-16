@@ -79,9 +79,9 @@
     <Compile Include="Services\Implementation\OrderGatewayService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
+    <ProjectReference Include="..\DomainModel\DtoModel.csproj">
       <Project>{b3c49f40-d6f2-4d42-b4a6-0d468e5612d4}</Project>
-      <Name>DomainModel</Name>
+      <Name>DtoModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

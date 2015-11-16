@@ -209,10 +209,10 @@
     <Content Include="Views\Customer\NewCustomer.cshtml" />
     <Content Include="Views\Cart\CompleteOrder.cshtml" />
     <Content Include="Views\Cart\OrderFail.cshtml" />
+    <Content Include="Views\Customer\ChangeAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DomainModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -224,9 +224,9 @@
       <Project>{fea48a19-1c49-4d3e-98c2-5b7cf8b9141a}</Project>
       <Name>CurrencyConverter</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
+    <ProjectReference Include="..\DomainModel\DtoModel.csproj">
       <Project>{b3c49f40-d6f2-4d42-b4a6-0d468e5612d4}</Project>
-      <Name>DomainModel</Name>
+      <Name>DtoModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\MoviesShopGateway\MoviesShopGateway.csproj">
       <Project>{2fbac0d7-8608-40f4-87ef-e80049e52e91}</Project>

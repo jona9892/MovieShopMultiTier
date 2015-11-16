@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieShopUser", "MovieShopU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesShopGateway", "MoviesShopGateway\MoviesShopGateway.csproj", "{2FBAC0D7-8608-40F4-87EF-E80049E52E91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{B3C49F40-D6F2-4D42-B4A6-0D468E5612D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DtoModel", "DomainModel\DtoModel.csproj", "{B3C49F40-D6F2-4D42-B4A6-0D468E5612D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyConverter", "CurrencyConverter\CurrencyConverter.csproj", "{FEA48A19-1C49-4D3E-98C2-5B7CF8B9141A}"
 EndProject

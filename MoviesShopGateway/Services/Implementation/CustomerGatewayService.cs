@@ -64,8 +64,6 @@ namespace MoviesShopGateway.Services.Implementation
             }
         }
 
-
-
         public Customer Update(Customer t)
         {
             using (var client = new HttpClient())
