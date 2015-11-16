@@ -67,13 +67,14 @@ namespace MovieShopUser.Controllers
                     OrderLines = cart.OrderLines
                 };
                 facade.GetOrderGateway().Add(order);
-                return View("CompleteOrder");
+                
+                return View(cart.OrderLines);
+                //return View("CompleteOrder");
             }
             catch
             {
                 return View("OrderFail");
             }
         }
-
     }
 }

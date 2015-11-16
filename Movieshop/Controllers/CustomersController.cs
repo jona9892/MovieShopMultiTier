@@ -54,9 +54,7 @@ namespace Movieshop.Controllers
         [HttpPost]
         public ActionResult Edit(Customer customer)
         {
-            //customer.Adress = facade.GetAddressGateway().Read(customer.Adress.Id);
             facade.GetCustomerGateway().Update(customer);
-            //facade.GetAddressGateway().Update(customer.Adress);
             return RedirectToAction("Index");
         }
 

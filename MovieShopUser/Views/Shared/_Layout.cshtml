@@ -25,16 +25,13 @@
                             @Html.TextBox("UserEmail")
                             @Html.Password("Password")
                             <button type="submit" class="btn btn-default">Log in</button>
-                            @Html.ActionLink("Register", "NewCustomer", "customer", new { @class = "btn btn-default pull-right", style = "margin-left:3px;" })
-
-                    </form>
+                        </form>
                     </li>
+                    <li>@Html.ActionLink("Register", "NewCustomer", "Customer", null, new { @class = "btn btn-default pull-right", style = "margin-left:3px;" })</li>
                 }
             </ul>
 
         </div>
-
-
         @RenderBody()
     </div>
 

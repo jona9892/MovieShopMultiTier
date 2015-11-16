@@ -42,92 +42,92 @@ namespace MovieShopUser.Controllers
             return PartialView(genres);
         }
 
-        [HttpGet]
-        public ActionResult Verification(int movieId)
-        {
-            var movie = facade.GetMovieGateway().Read(movieId);
-            return View(movie);
-        }
+        //[HttpGet]
+        //public ActionResult Verification(int movieId)
+        //{
+        //    var movie = facade.GetMovieGateway().Read(movieId);
+        //    return View(movie);
+        //}
 
-        [HttpGet]
-        public ActionResult CustomerEdit(string eMail, int movieId)
-        {
+        //[HttpGet]
+        //public ActionResult CustomerEdit(string eMail, int movieId)
+        //{
 
-            var customers = facade.GetCustomerGateway().ReadAll();
+        //    var customers = facade.GetCustomerGateway().ReadAll();
 
 
-            CustomerViewModel viewModel = new CustomerViewModel()
-            {
-                Movie = facade.GetMovieGateway().Read(movieId),
-                Customer = customers.Where(x => x.Email == eMail).FirstOrDefault(),
-                Address = customers.Where(x => x.Email == eMail).FirstOrDefault().Adress
+        //    CustomerViewModel viewModel = new CustomerViewModel()
+        //    {
+        //        Movie = facade.GetMovieGateway().Read(movieId),
+        //        Customer = customers.Where(x => x.Email == eMail).FirstOrDefault(),
+        //        Address = customers.Where(x => x.Email == eMail).FirstOrDefault().Adress
 
-            };
+        //    };
            
 
-            return View(viewModel);
-        }
+        //    return View(viewModel);
+        //}
     
-        [HttpPost]
-        public ActionResult CustomerEdit(int movieId, Customer customer, Adress address)
-        {
-            Movie movie = facade.GetMovieGateway().Read(movieId);
-            customer.Adress = address;
-            facade.GetCustomerGateway().Update(customer);
-            facade.GetAddressGateway().Update(customer.Adress);
+        //[HttpPost]
+        //public ActionResult CustomerEdit(int movieId, Customer customer, Adress address)
+        //{
+        //    Movie movie = facade.GetMovieGateway().Read(movieId);
+        //    customer.Adress = address;
+        //    facade.GetCustomerGateway().Update(customer);
+        //    facade.GetAddressGateway().Update(customer.Adress);
 
-            Order order = new Order()
-            {
-                Date = DateTime.Now,
-                CustomerId = customer.Id,
-                //MovieId = movieId
-            };
-            facade.GetOrderGateway().Add(order);
+        //    Order order = new Order()
+        //    {
+        //        Date = DateTime.Now,
+        //        CustomerId = customer.Id,
+        //        //MovieId = movieId
+        //    };
+        //    facade.GetOrderGateway().Add(order);
 
-            return RedirectToAction("OrderCompletion", new { movieId = movieId});
-        }
-
-
-        [HttpGet]
-        public ActionResult OrderCompletion(int movieId)
-        {
-            Movie movie = facade.GetMovieGateway().Read(movieId);
-            return View(movie);            
-        }
+        //    return RedirectToAction("OrderCompletion", new { movieId = movieId});
+        //}
 
 
-        [HttpGet]
-        public ActionResult NewCustomer(int movieId)
-        {
-            CustomerViewModel viewModel = new CustomerViewModel()
-            {
-                Movie = facade.GetMovieGateway().Read(movieId)
-            };
-            return View(viewModel);
-        }
+        //[HttpGet]
+        //public ActionResult OrderCompletion(int movieId)
+        //{
+        //    Movie movie = facade.GetMovieGateway().Read(movieId);
+        //    return View(movie);            
+        //}
 
-        [HttpPost]
-        public ActionResult NewCustomerCreate(int movieId, Customer customer, Adress address)
-        {
+
+        //[HttpGet]
+        //public ActionResult NewCustomer(int movieId)
+        //{
+        //    CustomerViewModel viewModel = new CustomerViewModel()
+        //    {
+        //        Movie = facade.GetMovieGateway().Read(movieId)
+        //    };
+        //    return View(viewModel);
+        //}
+
+        //[HttpPost]
+        //public ActionResult NewCustomerCreate(int movieId, Customer customer, Adress address)
+        //{
             
-            CustomerViewModel viewModel = new CustomerViewModel()
-            {
-                Movie = facade.GetMovieGateway().Read(movieId)
+        //    CustomerViewModel viewModel = new CustomerViewModel()
+        //    {
+        //        Movie = facade.GetMovieGateway().Read(movieId)
                 
-            };
-            customer.Adress = address;
-            facade.GetCustomerGateway().Add(customer);
+        //    };
+        //    customer.Adress = address;
+        //    facade.GetCustomerGateway().Add(customer);
              
 
-            Order order = new Order()
-            {
-                Date = DateTime.Now,
-                CustomerId = customer.Id,
-                //MovieId = movieId
-            };
-            facade.GetOrderGateway().Add(order);
-            return View(viewModel);
-        }
+        //    Order order = new Order()
+        //    {
+        //        Date = DateTime.Now,
+        //        CustomerId = customer.Id,
+        //        //MovieId = movieId
+        //    };
+        //    facade.GetOrderGateway().Add(order);
+        //    return View(viewModel);
+        //}
 
 
 
