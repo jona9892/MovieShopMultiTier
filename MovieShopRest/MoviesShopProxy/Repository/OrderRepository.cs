@@ -3,6 +3,7 @@ using MovieShopDAL.DomainModel;
 using MoviesShopDAL.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,17 @@ namespace MovieShopDAL.Repository
 
         public Order Add(Order order)
         {
-                //Create the queries
-                ctx.Orders.Add(order);
-                //Execute the queries
-                ctx.SaveChanges();
-                return order;
-            
+            foreach (OrderLine item in order.OrderLines)
+            {
+                    ctx.Movies.Attach(item.Movie);
+                    ctx.Genres.Attach(item.Movie.Genre);
+            }
+            //Create the queries
+            ctx.Orders.Add(order);
+            //Execute the queries
+            ctx.SaveChanges();
+            return order;
+
         }
 
         public List<Order> ReadAll()

@@ -19,14 +19,13 @@ namespace MovieShopDAL.Repository
         }
 
         public Movie Add(Movie movie) {
-            
-                ctx.Genres.Attach(movie.Genre);
-                //Create the queries
-                ctx.Movies.Add(movie);
-                //Execute the queries
-                ctx.SaveChanges();
-                return movie;
-            
+            ctx.Genres.Attach(movie.Genre);
+            //Create the queries
+            ctx.Movies.Add(movie);
+            //Execute the queries
+            ctx.SaveChanges();
+            return movie;
+
         }
 
         public List<Movie> ReadAll()

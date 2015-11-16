@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MovieShopUser.Models
+namespace MovieShopDAL.DomainModel
 {
     public class OrderLine
     {

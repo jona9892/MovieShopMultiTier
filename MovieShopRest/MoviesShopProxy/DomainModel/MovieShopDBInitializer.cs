@@ -179,7 +179,8 @@ namespace MovieShopDAL.Context
                 FirstName = "Jonathan",
                 LastName = "Gjøl",
                 Email = "Jonathan@sighotel.dk",
-                Adress = address1
+                Adress = address1,
+                Password = "bek95gbr"
 
             });
 

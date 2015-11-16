@@ -25,10 +25,10 @@
                     {
                         <tr>
                             <td>
-                                <img src="@item.Movie.ImgURL" width="45" height="67" />
+                                <img src="@item.Movie.imageURL" width="45" height="67" />
                             </td>
                             <td>@item.Movie.Title</td>
-                            <td>@item.Movie.Price $</td>
+                            <td>@item.Movie.Price </td>
                             <td>@item.Amount</td>
                             @*<td>
                                     @Html.ActionLink("X", "RemoveFromCart", new { id = item.Id })
@@ -41,7 +41,7 @@
                 </tbody>
             </table>
             @Html.ActionLink("Continue Shopping", "Index", "Home", null, new { @class = "btn btn-primary" })
-            @Html.ActionLink("Checkout", "CompleteOrder", "Checkout", null, new { @class = "btn btn-success" })
+            @Html.ActionLink("Checkout", "CompleteOrder", "Cart", null, new { @class = "btn btn-success" })
         </div>
     </div>
 </div>

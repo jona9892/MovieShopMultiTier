@@ -28,38 +28,6 @@ namespace MovieShopUser.Controllers
             }
             return View(lines);
         }
-
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Order order)
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Update(int orderId)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Update(Order order)
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Delete(int orderId)
-        {
-            
-            return View();
-        }
-
         
         [HttpPost]
         public ActionResult DeleteConfirmed(Order order)
@@ -91,10 +59,7 @@ namespace MovieShopUser.Controllers
                 int userId = (int)Session["UserId"];
                 int customer = facade.GetCustomerGateway().Read(userId).Id;
                 ShoppingCart cart = Session["ShoppingCart"] as ShoppingCart;
-                for (int i = 0; i < cart.OrderLines.Count; i++)
-                {
-                    cart.OrderLines[i].MovieId = cart.OrderLines[i].MovieId;
-                }
+                
                 Order order = new Order()
                 {
                     CustomerId = customer,
@@ -102,14 +67,11 @@ namespace MovieShopUser.Controllers
                     OrderLines = cart.OrderLines
                 };
                 facade.GetOrderGateway().Add(order);
-
-                cart.OrderLines = new List<OrderLine>();
-                Session["ShoppingCart"] = cart;
-                return View("OrderCompletion");
+                return View("CompleteOrder");
             }
             catch
             {
-                return View("OrderCompletion");
+                return View("OrderFail");
             }
         }
 

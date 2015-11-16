@@ -19,14 +19,11 @@ namespace MovieShopDAL.Repository
         }
         public Genre Add(Genre genre)
         {
-            
-                //Create the queries
-                ctx.Genres.Add(genre);
-                //Execute the queries
-                ctx.SaveChanges();
-
-                return genre;
-            
+            //Create the queries
+            ctx.Genres.Add(genre);
+            //Execute the queries
+            ctx.SaveChanges();
+            return genre;
         }
 
         public List<Genre> ReadAll()

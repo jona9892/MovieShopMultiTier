@@ -208,6 +208,7 @@
     <Content Include="Views\Customer\UserProfile.cshtml" />
     <Content Include="Views\Customer\NewCustomer.cshtml" />
     <Content Include="Views\Cart\CompleteOrder.cshtml" />
+    <Content Include="Views\Cart\OrderFail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
