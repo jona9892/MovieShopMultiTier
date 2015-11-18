@@ -23,9 +23,10 @@ namespace MovieShopDAL.Repository
         {
             foreach (OrderLine item in order.OrderLines)
             {
-                    ctx.Movies.Attach(item.Movie);
-                    ctx.Genres.Attach(item.Movie.Genre);
+                ctx.Movies.Attach(item.Movie);
+                ctx.Genres.Attach(item.Movie.Genre);
             }
+
             //Create the queries
             ctx.Orders.Add(order);
             //Execute the queries

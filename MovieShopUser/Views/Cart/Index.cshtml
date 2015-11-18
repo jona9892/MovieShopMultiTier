@@ -1,54 +1,8 @@
-﻿@model List<DomainModel.DomainModel.OrderLine>
+﻿@model MovieShopUser.Models.ViewModels.CartViewModel
 
 @{
     ViewBag.Title = "Index";
 }
-
-<style>
-    #moviePoster {
-        position: relative;
-        width: 200px;
-        height: 300px;
-        max-height: 100%;
-        max-width: 100%;
-        display: block;
-        background-size: 100% 100%;
-        margin: 10%;
-        transition: 0.3s;
-        -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-        -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-    }
-
-        #moviePoster:hover {
-            -ms-transform: scale(1.2);
-            -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-        }
-
-    body {
-        z-index: 9999;
-        text-align: center;
-        align-content: center;
-    }
-
-    .background-image {
-        position: fixed;
-        left: -15px;
-        right: 15px;
-        top: -100px;
-        z-index: -1;
-        display: block;
-        background-image: url('http://www.planwallpaper.com/static/images/6790904-free-background-wallpaper.jpg');
-        width: 115%;
-        height: 130%;
-        -webkit-filter: blur(10px);
-        -moz-filter: blur(10px);
-        -ms-filter: blur(10px);
-        filter: blur(10px);
-    }
-</style>
-
     <div class="container" style="margin-top: 20px">
         <div class="panel panel-border">
             <div class="panel-black">Shopping Cart</div>
@@ -64,14 +18,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Orderlines)
                         {
                             <tr>
                                 <td>
                                     <img src="@item.Movie.imageURL" width="45" height="67" />
                                 </td>
                                 <td>@item.Movie.Title</td>
-                                <td>@item.Movie.Price </td>
+                                <td>
+                                    <div class="dropdown pull-left" style="margin-right: 3px;">
+                                        <select class="form-control">
+                                            <option>@(@item.Movie.Price ) DKK</option>
+                                            <option>@(@item.Movie.Price * @Model.valutaData.Rates.USD) USD</option>
+                                            <option>@(@item.Movie.Price * @Model.valutaData.Rates.EUR) EUR</option>
+                                            <option>@(@item.Movie.Price * @Model.valutaData.Rates.CAD) CAD</option>
+                                            <option>@(@item.Movie.Price * @Model.valutaData.Rates.GBP) GBP</option>
+                                            <option>@(@item.Movie.Price * @Model.valutaData.Rates.CNY) CNY</option>
+                                            <option>@(@item.Movie.Price * @Model.valutaData.Rates.JPY) JPY</option>
+                                        </select>
+                                    </div>
+                                </td>
+
                                 <td>@item.Amount</td>
                                 @*<td>
                                         @Html.ActionLink("X", "RemoveFromCart", new { id = item.Id })

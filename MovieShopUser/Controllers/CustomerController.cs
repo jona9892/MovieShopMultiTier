@@ -60,14 +60,9 @@ namespace MovieShopUser.Controllers
         [HttpPost]
         public ActionResult NewCustomer(RegisterModel registerModel)
         {
-            ModelState.Remove("Customer.Password");
-            if (ModelState.IsValid)
-            {
                 registerModel.Customer.Password = registerModel.Password;
                 facade.GetCustomerGateway().Add(registerModel.Customer);
                 return RedirectToAction("Index", "Home");
-            }
-            return View(registerModel);
         }
 
         [HttpGet]
@@ -79,19 +74,11 @@ namespace MovieShopUser.Controllers
         [HttpPost]
         public ActionResult ChangeAddress(Customer customer)
         {
-            ModelState.Remove("Password");
-            if (ModelState.IsValid)
-            {
                 Session["UserName"] = customer.FirstName + " " + customer.LastName;
                 customer.Id = (int)Session["UserId"];
                 facade.GetCustomerGateway().Update(customer);
 
                 return RedirectToAction("UserProfile");
-            }
-            else
-            {
-                return View(customer);
-            }
         }
     }
 }

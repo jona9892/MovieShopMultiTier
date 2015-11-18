@@ -1,5 +1,6 @@
 ﻿using DomainModel.DomainModel;
 using MovieShopUser.Models;
+using MovieShopUser.Models.ViewModels;
 using MoviesShopGateway;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,12 @@ namespace MovieShopUser.Controllers
             {
                 lines = cart.OrderLines;
             }
-            return View(lines);
+
+            CartViewModel viewModel = new CartViewModel()
+            {
+                Orderlines = lines
+            };
+            return View(viewModel);
         }
         
         [HttpPost]
@@ -69,7 +75,6 @@ namespace MovieShopUser.Controllers
                 facade.GetOrderGateway().Add(order);
                 
                 return View(cart.OrderLines);
-                //return View("CompleteOrder");
             }
             catch
             {
