@@ -64,12 +64,10 @@ namespace MovieShopDAL.Repository
 
         public Order Delete(Order order)
         {
-            
                 var orderDB = ctx.Orders.ToList().FirstOrDefault(item => item.Id == order.Id);
                 ctx.Orders.Remove(orderDB);
                 ctx.SaveChanges();
                 return order;
-            
         }
 
     }

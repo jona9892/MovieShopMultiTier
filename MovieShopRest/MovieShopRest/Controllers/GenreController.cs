@@ -49,7 +49,6 @@ namespace MovieShopRest.Controllers
         }
 
         // DELETE api/values/5
-        [HttpDelete]
         public void Delete(int id)
         {
             var genre = new Facade().GetGenreRepository().Read(id);

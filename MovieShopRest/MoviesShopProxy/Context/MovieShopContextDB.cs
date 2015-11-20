@@ -15,7 +15,7 @@ namespace MovieShopDAL.Context
         {
             Database.SetInitializer(new MovieShopDBInitializer());
 
-            //Add this line to make json conversion happy.
+            //Add this line to make json conversion work.
             Configuration.ProxyCreationEnabled = false;
         }
 

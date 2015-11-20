@@ -28,7 +28,7 @@
                                 <td>
                                     <div class="dropdown pull-left" style="margin-right: 3px;">
                                         <select class="form-control">
-                                            <option>@(@item.Movie.Price ) DKK</option>
+                                            <option>@(@item.Movie.Price) DKK</option>
                                             <option>@(@item.Movie.Price * @Model.valutaData.Rates.USD) USD</option>
                                             <option>@(@item.Movie.Price * @Model.valutaData.Rates.EUR) EUR</option>
                                             <option>@(@item.Movie.Price * @Model.valutaData.Rates.CAD) CAD</option>
@@ -43,9 +43,10 @@
                                 @*<td>
                                         @Html.ActionLink("X", "RemoveFromCart", new { id = item.Id })
 
-                                    </td>*@
+                                 </td>*@
                             </tr>
                         }
+
 
 
                     </tbody>
