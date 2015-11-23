@@ -1,18 +1,13 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CurrencyConverter
 {
     public class Converter
     {
-        public ValutaData valutaData = new ValutaData();
         public string ValutaAPIURL = "http://api.fixer.io/latest?base=DKK";
+        public ValutaData valutaData = new ValutaData();
+
         public Converter()
         {
             StartupDataLoad();
@@ -22,7 +17,7 @@ namespace CurrencyConverter
         {
             using (var client = new HttpClient())
             {
-                HttpResponseMessage response =
+                var response =
                     client.GetAsync(ValutaAPIURL).Result;
                 valutaData = response.Content.ReadAsAsync<ValutaData>().Result;
             }
@@ -30,43 +25,43 @@ namespace CurrencyConverter
 
         public int DkkToEur(int dkkAmount)
         {
-            double amount = dkkAmount * valutaData.Rates.EUR;
-            int result = Convert.ToInt32(amount);
+            var amount = dkkAmount*valutaData.Rates.EUR;
+            var result = Convert.ToInt32(amount);
             return result;
         }
 
         public int DkkToUsd(int dkkAmount)
         {
-            double amount = dkkAmount * valutaData.Rates.USD;
-            int result = Convert.ToInt32(amount);
+            var amount = dkkAmount*valutaData.Rates.USD;
+            var result = Convert.ToInt32(amount);
             return result;
         }
 
         public int DkkToGbp(int dkkAmount)
         {
-            double amount = dkkAmount * valutaData.Rates.GBP;
-            int result = Convert.ToInt32(amount);
+            var amount = dkkAmount*valutaData.Rates.GBP;
+            var result = Convert.ToInt32(amount);
             return result;
         }
 
         public int DkkToCny(int dkkAmount)
         {
-            double amount = dkkAmount * valutaData.Rates.CNY;
-            int result = Convert.ToInt32(amount);
+            var amount = dkkAmount*valutaData.Rates.CNY;
+            var result = Convert.ToInt32(amount);
             return result;
         }
 
         public int DkkToJpy(int dkkAmount)
         {
-            double amount = dkkAmount * valutaData.Rates.JPY;
-            int result = Convert.ToInt32(amount);
+            var amount = dkkAmount*valutaData.Rates.JPY;
+            var result = Convert.ToInt32(amount);
             return result;
         }
 
         public int DkkToCad(int dkkAmount)
         {
-            double amount = dkkAmount * valutaData.Rates.CAD;
-            int result = Convert.ToInt32(amount);
+            var amount = dkkAmount*valutaData.Rates.CAD;
+            var result = Convert.ToInt32(amount);
             return result;
         }
     }
